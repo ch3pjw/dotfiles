@@ -32,7 +32,22 @@ function prompt_command {
 
     local hostname=$HOSTNAME
     local username=$(whoami)
-    local pwd=$(pwd | sed "s|$HOME|~|")
+    local host_text=${BGreen}${username}@${hostname}${Color_Off}
 
-    PS1="${exit_status_text}${BGreen}${username}@${hostname} ${BBlue}${pwd} $(git_prompt)${BBlue}♮ ${Color_Off}"
+    local pwd_text=$(pwd | sed "s|$HOME|~|")
+
+    local total_jobs=$(jobs | wc -l)
+    local stopped_jobs=$(jobs -s | wc -l)
+    local jobs_text
+    if [[ ${total_jobs} != 0 ]]; then
+        if [[ ${stopped_jobs} == 0 ]]; then
+            jobs_text="${LightGray}[${total_jobs}]${Color_Off}"
+        else
+            jobs_text="${LightGray}[${Red}${stopped_jobs}${LightGray}/${total_jobs}]${Color_Off}"
+        fi
+    fi
+
+    local prompt_char=${BBlue}♮${Color_Off}
+
+    PS1="${exit_status_text}${host_text} ${BBlue}${pwd_text} $(git_prompt)${jobs_text}${prompt_char} "
 }
