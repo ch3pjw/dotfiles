@@ -27,3 +27,8 @@ alias top='mytop'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
+
+# Enable 256 colours in tmux (needs to be accompanied by
+#   set -g default-terminal "screen-256color"
+# in ~/.tmux.conf
+alias tmux='TERM=xterm-256color tmux'
