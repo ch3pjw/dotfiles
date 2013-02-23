@@ -1,6 +1,6 @@
 # .bashrc
 
-# Aliases for fat fingers and convenience
+# Aliases for fat fingers and convenience:
 alias lks='ls'
 alias lsd='ls'
 alias las='ls'
@@ -31,3 +31,7 @@ alias rm='rm -i'
 #   set -g default-terminal "screen-256color"
 # in ~/.tmux.conf
 alias tmux='TERM=xterm-256color tmux'
+
+# Customise my bash prompt:
+source .prompt_command
+PROMPT_COMMAND=prompt_command
