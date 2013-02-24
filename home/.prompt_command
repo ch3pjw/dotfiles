@@ -1,11 +1,16 @@
 #!/bin/bash
 source .bash_colors
 
-function repeat_chars {
-    char=$1
-    num=$2
-    local temp_str
-    printf -v temp_str "%-${num}s" "${char}"
+function _padding {
+    local size=$1
+    local result
+    printf -v result "%${size}s" ' '
+    echo "$result"
+}
+function _repeat_chars {
+    local char=$1
+    local size=$2
+    local temp_str=$(_padding ${size})
     echo ${temp_str// /${char}}
 }
 
@@ -24,7 +29,7 @@ function prompt_command {
     # Must run this early because when we use $() this adds to our jobs count
     local total_jobs=$(jobs | wc -l)
     local stopped_jobs=$(jobs -s | wc -l)
-    local jobs_text jobs_text_color
+    local jobs_text='' jobs_text_color=''
     if [[ ${total_jobs} != 0 ]]; then
         if [[ ${stopped_jobs} == 0 ]]; then
             jobs_text="[${total_jobs}]"
@@ -65,11 +70,15 @@ function prompt_command {
         git_text_color=${git_text}
     fi
 
+    local date_text=$(date +%H:%M)
+    local date_text_color=${DarkGray}${date_text}${Color_Off}
+
     local prompt_char=${exit_status_text}
     local prompt_char_color=${exit_status_text_color}
 
-    local line_0=$(repeat_chars '─' $COLUMNS)
-    local line_1="${pwd_text_color} ${git_text_color}${jobs_text_color}"
+    local line_1_padding=$(($COLUMNS - ${#pwd_text} - ${#git_text} - ${#date_text} -${#jobs_text} - 3))
+    line_1_padding="${DarkGray}$(_repeat_chars '─' ${line_1_padding})"
+    local line_1="${pwd_text_color} ${git_text_color}${line_1_padding} ${jobs_text_color} ${date_text_color}"
     local line_2="${host_text_color} ${prompt_char_color} "
-    PS1="┌${line_0}\n│${line_1}\n╵${line_2}"
+    PS1="\n${line_1}\n${line_2}"
 }
