@@ -1,6 +1,13 @@
 #!/bin/bash
 source .bash_colors
 
+function repeat_chars {
+    char=$1
+    num=$2
+    local temp_str
+    printf -v temp_str "%-${num}s" "${char}"
+    echo ${temp_str// /${char}}
+}
 
 function prompt_command {
     local exit_status=$? # Must be the first thing we do
@@ -31,7 +38,7 @@ function prompt_command {
     local hostname=$HOSTNAME
     local username=$(whoami)
     local host_text=${username}@${hostname}
-    local host_text_color=${BGreen}${host_text}${Color_Off}
+    local host_text_color=${LightGray}${host_text}${Color_Off}
 
     local pwd_text=$(pwd | sed "s|$HOME|~|")
     local pwd_text_color=${BBlue}${pwd_text}${Color_Off}
@@ -61,7 +68,8 @@ function prompt_command {
     local prompt_char=${exit_status_text}
     local prompt_char_color=${exit_status_text_color}
 
+    local line_0=$(repeat_chars '─' $COLUMNS)
     local line_1="${pwd_text_color} ${git_text_color}${jobs_text_color}"
     local line_2="${host_text_color} ${prompt_char_color} "
-    PS1="${line_1}\n${line_2}"
+    PS1="┌${line_0}\n│${line_1}\n╵${line_2}"
 }
