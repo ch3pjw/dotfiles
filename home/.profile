@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -23,4 +24,7 @@ fi
 
 if [ -e "$HOME/.motd" ]; then
     source $HOME/.motd
+else
+    echo "Coudn't find custom .motd file, so you don't get a cow :-("
 fi
+
