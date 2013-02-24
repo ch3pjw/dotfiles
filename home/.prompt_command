@@ -1,5 +1,6 @@
 #!/bin/bash
-source .bash_colors
+# NOTE colours will just fail silently if not present
+source $HOME/.bash_colors
 
 function _padding {
     local size=$1
