@@ -33,6 +33,10 @@ alias rm='rm -i'
 alias tmux='TERM=xterm-256color tmux'
 
 # Customise my bash prompt:
-source .prompt_command
-PROMPT_COMMAND=prompt_command
+if [ -e "$HOME/.prompt_command" ]; then
+    source $HOME/.prompt_command
+    PROMPT_COMMAND=prompt_command
+else
+    echo "Couldn't find custom .prompt_command file, so using default prompt :-("
+fi
 
