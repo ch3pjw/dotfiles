@@ -4,31 +4,31 @@ function _do_motd {
     if which cowsay &> /dev/null && \
             which fortune &> /dev/null && \
             which figlet &> /dev/null; then
-        local text=$[($RANDOM % 4) + 1]
+        local text=$[($RANDOM % 6)]
         local cmd extra_cowflag
-        if [[ $text -lt 2 ]]; then
+        if [[ $text -lt 1 ]]; then
             cmd='figlet hello | '
             extra_cowflag='-n'
         else 
             cmd='fortune | '
         fi
-        local think=$[($RANDOM % 3) + 1]
-        if [[ $think -lt 2 ]]; then
+        local think=$[($RANDOM % 3)]
+        if [[ $think -lt 1 ]]; then
             cmd=${cmd}cowthink
         else
             cmd=${cmd}cowsay
         fi
         local cowflags
-        cowflags[2]='-d'
-        cowflags[3]='-g'
-        cowflags[4]='-p'
-        cowflags[5]='-t'
-        cowflags[6]='-w'
-        cowflags[7]='-y'
-        cowflags[8]='-s'
+        cowflags[1]='-d'
+        cowflags[2]='-g'
+        cowflags[3]='-p'
+        cowflags[4]='-t'
+        cowflags[5]='-w'
+        cowflags[6]='-y'
+        cowflags[7]='-s'
         local hour=$(date +%H)
-        local mooood=$[($RANDOM % 20) + 1]
-        if [[ $mooood -lt 2 || $hour -lt 7 ]]; then
+        local mooood=$[($RANDOM % 20)]
+        if [[ $mooood -lt 1 || $hour -lt 7 ]]; then
             # Asleep cow
             cmd="fortune | cowthink -t"
         else
