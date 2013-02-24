@@ -27,7 +27,7 @@ function _do_motd {
         cowflags[7]='-y'
         cowflags[8]='-s'
         local hour=$(date +%H)
-        local mooood=$[($RANDOM % 10) + 1]
+        local mooood=$[($RANDOM % 20) + 1]
         if [[ $mooood -lt 2 || $hour -lt 7 ]]; then
             # Asleep cow
             cmd="fortune | cowthink -t"
