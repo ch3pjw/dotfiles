@@ -20,3 +20,7 @@ fi
 if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
 fi
+
+if [ -e "$HOME/.motd" ]; then
+    source $HOME/.motd
+fi
