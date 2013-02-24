@@ -40,7 +40,7 @@ function prompt_command {
         fi
     fi
 
-    local hostname=$HOSTNAME
+    local hostname=$(echo $HOSTNAME | sed -e 's/\..*//')
     local username=$(whoami)
     local host_text=${username}@${hostname}
     local host_text_color=${LightGray}${host_text}${Color_Off}
