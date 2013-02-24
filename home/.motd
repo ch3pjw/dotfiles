@@ -1,0 +1,42 @@
+#!/bin/bash
+
+function _do_motd {
+    if which cowsay &> /dev/null && \
+            which fortune &> /dev/null && \
+            which figlet &> /dev/null; then
+        local text=$[($RANDOM % 4) + 1]
+        local cmd extra_cowflag
+        if [[ $text -lt 2 ]]; then
+            cmd='figlet hello | '
+            extra_cowflag='-n'
+        else 
+            cmd='fortune | '
+        fi
+        local think=$[($RANDOM % 3) + 1]
+        if [[ $think -lt 2 ]]; then
+            cmd=${cmd}cowthink
+        else
+            cmd=${cmd}cowsay
+        fi
+        local cowflags
+        cowflags[2]='-d'
+        cowflags[3]='-g'
+        cowflags[4]='-p'
+        cowflags[5]='-t'
+        cowflags[6]='-w'
+        cowflags[7]='-y'
+        cowflags[8]='-s'
+        local hour=$(date +%H)
+        local mooood=$[($RANDOM % 10) + 1]
+        if [[ $mooood -lt 2 || $hour -lt 7 ]]; then
+            # Asleep cow
+            cmd="fortune | cowthink -t"
+        else
+            # Random mood cow
+            cmd="${cmd} ${cowflags[$mooood]} ${extra_cowflag}"
+        fi
+        eval $cmd
+    fi
+}
+
+_do_motd

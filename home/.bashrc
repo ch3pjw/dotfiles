@@ -35,3 +35,4 @@ alias tmux='TERM=xterm-256color tmux'
 # Customise my bash prompt:
 source .prompt_command
 PROMPT_COMMAND=prompt_command
+
