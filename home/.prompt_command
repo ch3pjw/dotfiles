@@ -33,10 +33,10 @@ function prompt_command {
     local jobs_text=' ' jobs_text_color=' '
     if [[ ${total_jobs} != 0 ]]; then
         if [[ ${stopped_jobs} == 0 ]]; then
-            jobs_text="[${total_jobs}] "
+            jobs_text=" [${total_jobs}] "
             jobs_text_color=${LightGray}${jobs_text}${Color_Off}
         else
-            jobs_text="[${stopped_jobs}/${total_jobs}] "
+            jobs_text=" [${stopped_jobs}/${total_jobs}] "
             jobs_text_color="${LightGray} [${Red}${stopped_jobs}${LightGray}/${total_jobs}] ${Color_Off}"
         fi
     fi
