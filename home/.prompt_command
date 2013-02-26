@@ -48,7 +48,7 @@ function prompt_command {
 
     local pwd_text="$(pwd | sed "s|$HOME|~|")"
 
-    local git_text git_text_color
+    local git_text git_text_color git_ahead
     if git branch &> /dev/null; then
         # git is working and we're on a git branch
         if echo `git status` | grep "nothing to commit" > /dev/null 2>&1; then
@@ -63,6 +63,13 @@ function prompt_command {
             # Changes to working tree
             git_text=" $(__git_ps1 "{%s}") "
             git_text_color=${Red}${git_text}${Color_Off}
+        fi
+        git_ahead=$(git status | awk '/Your branch is ahead/{print "⭹ " $9 " "} /Your branch is behind/{print "⭶ " $7 " "}')
+        git_text="${git_text}${git_ahead}"
+        if [[ "${git_ahead}" =~ "⭹ " ]]; then
+            git_text_color="${git_text_color}${Green}${git_ahead}${Color_Off}"
+        else
+            git_text_color="${git_text_color}${Red}${git_ahead}${Color_Off}"
         fi
     else
         # prompt component when not in git
