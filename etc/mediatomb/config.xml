@@ -118,7 +118,7 @@
       <AppleTrailers enabled="no" refresh="43200" update-at-start="no" resolution="640"/>
     </online-content>
   </import>
-  <transcoding enabled="no">
+  <transcoding enabled="yes">
     <mimetype-profile-mappings>
       <transcode mimetype="video/x-flv" using="vlcmpeg"/>
       <transcode mimetype="application/ogg" using="vlcmpeg"/>
@@ -126,7 +126,7 @@
       <transcode mimetype="audio/x-flac" using="oggflac2raw"/>
     </mimetype-profile-mappings>
     <profiles>
-      <profile name="oggflac2raw" enabled="no" type="external">
+      <profile name="oggflac2raw" enabled="yes" type="external">
         <mimetype>audio/L16</mimetype>
         <accept-url>no</accept-url>
         <first-resource>yes</first-resource>
