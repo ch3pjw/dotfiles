@@ -37,7 +37,7 @@ function prompt_command {
             jobs_text_color=${LightGray}${jobs_text}${Color_Off}
         else
             jobs_text=" [${stopped_jobs}/${total_jobs}] "
-            jobs_text_color="${LightGray} [${Red}${stopped_jobs}${LightGray}/${total_jobs}] ${Color_Off}"
+            jobs_text_color="${LightGray} [${BRed}${stopped_jobs}${LightGray}/${total_jobs}] ${Color_Off}"
         fi
     fi
 
