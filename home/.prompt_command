@@ -67,7 +67,7 @@ function prompt_command {
         git_ahead=$(git status | awk '/Your branch is ahead/{print "⭹ " $9 " "} /Your branch is behind/{print "⭶ " $7 " "}')
         git_text="${git_text}${git_ahead}"
         if [[ "${git_ahead}" =~ "⭹ " ]]; then
-            git_text_color="${git_text_color}${Green}${git_ahead}${Color_Off}"
+            git_text_color="${git_text_color}${Yellow}${git_ahead}${Color_Off}"
         else
             git_text_color="${git_text_color}${Red}${git_ahead}${Color_Off}"
         fi
