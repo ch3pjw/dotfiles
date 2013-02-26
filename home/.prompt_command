@@ -64,7 +64,9 @@ function prompt_command {
             git_text=" $(__git_ps1 "{%s}") "
             git_text_color=${Red}${git_text}${Color_Off}
         fi
-        git_ahead=$(git status | awk '/Your branch is ahead/{print "⭹ " $9 " "} /Your branch is behind/{print "⭶ " $7 " "}')
+        git_ahead=$(git status | awk '/Your branch is ahead/{print "⭹ " $9 " "}\
+            /Your branch is behind/{print "⭶ " $8 " "}\
+            /diverged/,/respectively/{if ($0 ~ /respectively/) print "⭹ " $4 " ⭶ " $6 " "}')
         git_text="${git_text}${git_ahead}"
         if [[ "${git_ahead}" =~ "⭹ " ]]; then
             git_text_color="${git_text_color}${Yellow}${git_ahead}${Color_Off}"
