@@ -68,18 +68,7 @@ function prompt_command {
             /Your branch is behind/{print $8 "← "}\
             /diverged/,/respectively/{if ($0 ~ /respectively/) print $6 "←→" $4 " "}')
         git_text="${git_text}${git_ahead}"
-        if [[ "${git_ahead}" =~ "←→" ]]; then
-            # Both push and pull differ:
-            git_text_color="${git_text_color}${Yellow}${git_ahead%→*}${Red}${git_ahead#*←}${Color_Off}"
-        elif [[ "${git_ahead}" =~ "→" ]]; then
-            # Danger! We have stuff to push and it will be lost if we never
-            # push it anywhere!
-            git_text_color="${git_text_color}${Red}${git_ahead}${Color_Off}"
-        else
-            # Warning, you're not using the latest stuff, and you won't be able
-            # to push any commits you make on top of the current one!
-            git_text_color="${git_text_color}${Yellow}${git_ahead}${Color_Off}"
-        fi
+        git_text_color="${git_text_color}${Yellow}${git_ahead%→*}${Red}${git_ahead#*←}${Color_Off}"
     else
         # prompt component when not in git
         git_text=' '
