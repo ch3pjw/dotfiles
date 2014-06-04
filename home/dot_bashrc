@@ -58,6 +58,10 @@ function .. (){
     cd $dir >&/dev/null
 }
 
+# Convenience bindings to search history
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
 # Customise my bash prompt:
 if [ -e "$HOME/.prompt_command" ]; then
     source $HOME/.prompt_command
