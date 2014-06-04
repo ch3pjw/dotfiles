@@ -47,6 +47,17 @@ fi
 # in ~/.tmux.conf
 alias tmux='TERM=xterm-256color tmux'
 
+# Convenience function for moving to parent directory :-)
+function .. (){
+    local arg=${1:-1}
+    local dir=""
+    while [ $arg -gt 0 ]; do
+        dir="../$dir"
+        arg=$(($arg - 1))
+    done
+    cd $dir >&/dev/null
+}
+
 # Customise my bash prompt:
 if [ -e "$HOME/.prompt_command" ]; then
     source $HOME/.prompt_command
