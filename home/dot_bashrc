@@ -35,6 +35,13 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
+# Program environment variables
+export WORKON_HOME=$HOME/.virtualenvs
+vew=/usr/bin/virtualenvwrapper.sh
+if [[ -e $vew ]]; then
+    source /usr/bin/virtualenvwrapper.sh
+fi
+
 # Enable 256 colours in tmux (needs to be accompanied by
 #   set -g default-terminal "screen-256color"
 # in ~/.tmux.conf
