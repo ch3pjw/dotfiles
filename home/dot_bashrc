@@ -1,5 +1,11 @@
 # .bashrc
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+
 # Aliases for fat fingers and convenience:
 alias lks='ls'
 alias lsd='ls'
