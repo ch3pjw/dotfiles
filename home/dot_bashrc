@@ -30,6 +30,11 @@ function mytop {
     fi 
 }
 alias top='mytop'
+if which aptitude > /dev/null; then
+    alias install='sudo aptitude install'
+else
+    alias install='sudo yum install'
+fi
 
 alias cp='cp -i'
 alias mv='mv -i'
