@@ -42,9 +42,9 @@ alias rm='rm -i'
 
 # Program environment variables
 export WORKON_HOME=$HOME/.virtualenvs
-vew=/usr/bin/virtualenvwrapper.sh
+vew=/usr/local/bin/virtualenvwrapper.sh
 if [[ -e $vew ]]; then
-    source /usr/bin/virtualenvwrapper.sh
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 # Enable 256 colours in tmux (needs to be accompanied by
