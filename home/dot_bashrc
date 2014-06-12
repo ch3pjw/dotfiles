@@ -74,3 +74,8 @@ if [ -e "$HOME/.prompt_command" ]; then
 else
     echo "Couldn't find custom .prompt_command file, so using default prompt :-("
 fi
+
+export PATH=~/bin/:$PATH
+export EDITOR=vim
+
+
