@@ -34,9 +34,13 @@ function mytop {
 }
 alias top='mytop'
 if which aptitude > /dev/null; then
+    # On Mint/Ubuntu
     alias install='sudo aptitude install'
+    alias update='sudo aptitude upgrade'
 else
+    # On Fedora
     alias install='sudo yum install'
+    alias update='sudo yum update'
 fi
 
 alias cp='cp -i'
