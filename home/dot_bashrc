@@ -74,10 +74,15 @@ function .. (){
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
+# Make history from all terminals immediately available to new terminals
+export HISTCONTROL="ignoredups:erasedups"
+shopt -s histappend
+
 # Customise my bash prompt:
 if [ -e "$HOME/.prompt_command" ]; then
     source $HOME/.prompt_command
-    PROMPT_COMMAND=prompt_command
+    # Commit the history every every prompt
+    PROMPT_COMMAND="history -a; prompt_command"
 else
     echo "Couldn't find custom .prompt_command file, so using default prompt :-("
 fi
