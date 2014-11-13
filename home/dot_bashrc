@@ -30,7 +30,7 @@ function mytop {
         htop
     else
         `which top` # Musn't recurse! We will do if we define an alias to top
-    fi 
+    fi
 }
 alias top='mytop'
 if which aptitude > /dev/null; then
