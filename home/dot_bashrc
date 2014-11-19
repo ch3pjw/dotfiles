@@ -20,6 +20,8 @@ alias kess='less'
 alias cim='vim'
 alias bim='vim'
 alias wrokon='workon'
+alias wrokno='workon'
+alias workno='workon'
 alias worokn='workon'
 
 alias pgrep='pgrep -l'
