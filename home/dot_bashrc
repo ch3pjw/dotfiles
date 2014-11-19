@@ -84,7 +84,7 @@ shopt -s histappend
 if [ -e "$HOME/.prompt_command" ]; then
     source $HOME/.prompt_command
     # Commit the history every every prompt
-    PROMPT_COMMAND="history -a; prompt_command"
+    PROMPT_COMMAND="prompt_command; history -a"
 else
     echo "Couldn't find custom .prompt_command file, so using default prompt :-("
 fi
