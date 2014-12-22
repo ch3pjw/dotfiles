@@ -18,6 +18,8 @@
 (ido-mode t)
 
 (setq scroll-step 1)
+(setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+
 ; General file editing preferences
 (global-linum-mode 1)
 (global-hl-line-mode 1)
