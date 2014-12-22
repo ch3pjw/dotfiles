@@ -17,6 +17,7 @@
 (require 'ido)
 (ido-mode t)
 
+(setq scroll-step 1)
 ; General file editing preferences
 (global-linum-mode 1)
 (global-hl-line-mode 1)
