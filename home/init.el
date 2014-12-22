@@ -14,7 +14,10 @@
 (require 'ido)
 (ido-mode t)
 
-(setq scroll-step 1)
+(setq
+  scroll-step 1
+  scroll-conservatively 100000
+  scroll-preserve-screen-position 1)
 (setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
 
 (require 'auto-complete)
