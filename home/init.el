@@ -7,9 +7,6 @@
 (package-initialize)
 
 ; UI stuff:
-(setq viper-mode t)
-(require 'viper)
-
 (require 'evil)
 (evil-mode 1)
 
