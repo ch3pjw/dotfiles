@@ -26,6 +26,11 @@
 ; General file editing preferences
 (global-linum-mode 1)
 (global-hl-line-mode 1)
+
+(column-number-mode 1) ; in mode line
+(column-enforce-mode 1)
+(add-hook 'python-mode-hook (lambda () (column-enforce-column 79)))
+
 (show-smartparens-global-mode +1)
 ; (global-git-gutter-mode +1)
 
