@@ -43,6 +43,9 @@
 (setq-default indent-tabs-mode nil)
 ; (global-git-gutter-mode +1)
 
+(setq-default show-trailing-whitespace t)
+(add-hook 'write-file-hooks 'delete-trailing-whitespace)
+
 (add-to-list 'load-path "~/.emacs.d/go-mode.el")
 (require 'go-mode-load)
 
