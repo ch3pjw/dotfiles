@@ -13,6 +13,7 @@
 (menu-bar-mode -1)
 (require 'ido)
 (ido-mode t)
+(savehist-mode 1)
 
 (setq
   scroll-step 1
