@@ -31,7 +31,6 @@
 (column-number-mode 1) ; in mode line
 (require 'column-enforce-mode)
 (global-column-enforce-mode 1)
-(add-hook 'python-mode-hook (lambda () (column-enforce-column 79)))
 (require 'fill-column-indicator)
 ; fci-mode doesn't provide its own global setting
 (define-globalized-minor-mode global-fci-mode fci-mode turn-on-fci-mode)
