@@ -40,6 +40,7 @@
 (setq fci-rule-character-color "grey15")
 
 (show-smartparens-global-mode +1)
+(setq-default indent-tabs-mode nil)
 ; (global-git-gutter-mode +1)
 
 (add-to-list 'load-path "~/.emacs.d/go-mode.el")
