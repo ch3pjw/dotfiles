@@ -46,7 +46,8 @@ else
     alias update='sudo yum update'
 fi
 
-alias emacs='emacsclient -t'
+run_emacs='emacsclient -t'
+alias emacs=$run_emacs
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
@@ -92,7 +93,7 @@ else
 fi
 
 export PATH=~/bin/:$PATH
-export EDITOR=vim
+export EDITOR=$run_emacs
 export ALTERNATE_EDITOR=""  # Start emacsclient start the daemon automatically
 
 
