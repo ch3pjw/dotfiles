@@ -68,4 +68,5 @@
  '(linum ((t (:inherit shadow :background "grey15"))))
  '(region ((t (:background "color-17"))))
  '(shadow ((t (:foreground "grey60"))))
- '(viper-minibuffer-insert ((t (:inherit custom-comment)))))
+ '(trailing-whitespace ((t (:inherit error :inverse-video t))))
+ '(viper-minibuffer-insert ((t (:inherit custom-comment))) t))
