@@ -9,6 +9,17 @@
 ; UI stuff:
 (require 'evil)
 (evil-mode 1)
+(defun my-esc (prompt)
+  "Evil insert state esc == C-g binding"
+  (cond
+   ;; If we're in an Evil state that defines [escape], return [escape] so that
+   ;; Key Lookup will use it:
+   ((or (evil-insert-state-p) (evil-normal-state-p) (evil-replace-state-p)
+        (evil-visual-state-p)) [escape])
+   (t (kbd "C-g"))))
+(define-key key-translation-map (kbd "C-g") 'my-esc)
+(define-key evil-operator-state-map (kbd "C-g") 'keyboard-quit)
+
 
 (menu-bar-mode -1)
 (require 'ido)
