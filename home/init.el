@@ -19,6 +19,7 @@
    (t (kbd "C-g"))))
 (define-key key-translation-map (kbd "C-g") 'my-esc)
 (define-key evil-operator-state-map (kbd "C-g") 'keyboard-quit)
+(add-to-list 'evil-emacs-state-modes 'git-rebase-mode)
 
 
 (menu-bar-mode -1)
