@@ -39,7 +39,7 @@ alias top='mytop'
 if which aptitude > /dev/null; then
     # On Mint/Ubuntu
     alias install='sudo aptitude install'
-    alias update='sudo aptitude upgrade'
+    alias update='sudo aptitude upgrade -y'
 else
     # On Fedora
     alias install='sudo yum install'
