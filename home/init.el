@@ -7,6 +7,7 @@
 (package-initialize)
 
 ; UI stuff:
+(require 'windresize)
 (require 'evil)
 (evil-mode 1)
 (defun my-esc (prompt)
@@ -17,6 +18,17 @@
    ((or (evil-insert-state-p) (evil-normal-state-p) (evil-replace-state-p)
         (evil-visual-state-p)) [escape])
    (t (kbd "C-g"))))
+; Define some useful vim-like key bindings, and bindings to get around annoying
+; terminal <esc> key -> alt-key behaviour:
+(define-prefix-command 'my-window-map)
+(global-set-key (kbd "C-w") 'my-window-map)
+(define-key my-window-map (kbd "<left>") 'windmove-left)
+(define-key my-window-map (kbd "<right>") 'windmove-right)
+(define-key my-window-map (kbd "<up>") 'windmove-up)
+(define-key my-window-map (kbd "<down>") 'windmove-down)
+(define-key my-window-map (kbd "%") 'split-window-right)
+(define-key my-window-map (kbd "\"") 'split-window-below)
+(define-key my-window-map (kbd "RET") 'windresize)
 (define-key key-translation-map (kbd "C-g") 'my-esc)
 (define-key evil-operator-state-map (kbd "C-g") 'keyboard-quit)
 (add-to-list 'evil-emacs-state-modes 'git-rebase-mode)
