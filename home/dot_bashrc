@@ -30,6 +30,7 @@ alias wrokno='workon'
 alias workno='workon'
 alias worokn='workon'
 alias workn='workon'
+alias tmxu='tmux'
 
 alias pgrep='pgrep -l'
 alias ggrep='git grep -n'
