@@ -29,6 +29,7 @@ alias wrokon='workon'
 alias wrokno='workon'
 alias workno='workon'
 alias worokn='workon'
+alias workn='workon'
 
 alias pgrep='pgrep -l'
 alias ggrep='git grep -n'
