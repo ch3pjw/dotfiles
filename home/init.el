@@ -76,6 +76,8 @@
 (elpy-enable)
 (add-hook 'python-mode-hook (lambda () (auto-complete-mode -1)))
 
+(add-to-list 'auto-mode-alist '("\\.cjsx$" . coffee-mode))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
