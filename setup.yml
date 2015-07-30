@@ -1,0 +1,14 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Upgrade all system packages
+      apt: upgrade=yes update_cache=yes cache_valid_time=86400
+      sudo: yes
+
+    - name: Install applications
+      apt: name={{item}} state=latest
+      sudo: yes
+      with_items:
+        emacs
+
+    - name:
