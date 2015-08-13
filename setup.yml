@@ -23,8 +23,11 @@
         - htop
         - mtr-tiny
 
-    - name: src dir
-      file: path=~/src state=directory
+    - name: home dirs
+      file: path=~/{{item}} state=directory
+      with_items:
+        - src
+        - tmp
 
     - name: clone sources
       git: clone=yes repo={{item.repo}} dest=~/src/{{item.dest}}
