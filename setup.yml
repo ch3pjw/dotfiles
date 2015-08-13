@@ -67,6 +67,7 @@
         password: tmux_share_password
         shell: /bin/tmux_share_guest_shell
         expires: 1.0  # Recommended to disable account
+      sudo: yes
 
     - name: disable guest account
       command: usermod --lock guest
