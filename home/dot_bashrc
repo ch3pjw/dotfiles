@@ -60,17 +60,26 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-# Program environment variables
-export WORKON_HOME=$HOME/.virtualenvs
-vew=/usr/local/bin/virtualenvwrapper.sh
-if [[ -e $vew ]]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
-
 # Enable 256 colours in tmux (needs to be accompanied by
 #   set -g default-terminal "screen-256color"
 # in ~/.tmux.conf
 alias tmux='TERM=xterm-256color tmux'
+
+# Program environment variables
+export WORKON_HOME=$HOME/.virtualenvs
+vew=/usr/local/bin/virtualenvwrapper.sh
+if [[ -e $vew ]]; then
+    source $vew
+    orig_workon=$(which workon)
+    function my_workon {
+        if [ -n "$TMUX" ]; then
+            workon $1
+        else
+            tmux new-session \; send-keys workon SPACE $1 ENTER
+        fi
+    }
+    alias workon='my_workon'
+fi
 
 # Convenience function for moving to parent directory :-)
 function .. (){
