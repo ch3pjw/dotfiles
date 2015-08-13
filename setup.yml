@@ -1,0 +1,70 @@
+- hosts: localhost
+  connection: local
+  vars_prompt:
+    - name: "tmux_share_password"
+      prompt:  "guest password for sharing tmux sessions"
+      private: yes
+      encrypt: sha512_crypt
+      confirm: yes
+      salt_size: 7
+  tasks:
+    - name: Upgrade all system packages
+      apt: upgrade=yes update_cache=yes cache_valid_time=86400
+      sudo: yes
+
+    - name: Install applications
+      apt: name={{item}} state=latest
+      sudo: yes
+      with_items:
+        - git
+        - emacs
+        - vim
+        - tmux
+        - htop
+        - mtr-tiny
+
+    - name: src dir
+      file: path=~/src state=directory
+
+    - name: clone sources
+      git: clone=yes repo={{item.repo}} dest=~/src/{{item.dest}}
+      with_items:
+        - repo: https://github.com/ch3pjw/dotfiles.git
+          dest: dotfiles
+        - repo: https://github.com/ch3pjw/bash_prompt.git
+          dest: bash_prompt
+
+    - name: clean user dotfiles
+      file: path=~/.bashrc state=absent
+
+    - name: dotfile ~ links
+      file: path={{item.dest}} state=link src={{item.src}}
+      with_items:
+          - src: ~/src/dotfiles/home/bin
+            dest: ~/bin
+          - src: ~/src/dotfiles/home/dot_bashrc
+            dest: ~/.bashrc
+          - src: ~/src/bash_prompt/bash_colors
+            dest: ~/.bash_colors
+          - src: ~/src/bash_prompt/prompt_command
+            dest: ~/.prompt_command
+
+    # - name: global tmux_share login shell
+    #   file:
+    #     path: /bin/tmux_share_guest_shell
+    #     state: link
+    #     src: ~/bin/tmux_share_guest_shell
+    #   sudo: yes
+
+    - name: guest user for tmux_share
+      user:
+        name: guest
+        comment: A dynamically enabled user for tmux_share
+        createhome: no
+        password: tmux_share_password
+        shell: /bin/tmux_share_guest_shell
+        expires: 1.0  # Recommended to disable account
+
+    - name: disable guest account
+      command: usermod --lock guest
+      sudo: yes
