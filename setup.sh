@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
+this_dir=$(dirname $0)
+
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get install -y python-pip python-dev aptitude
@@ -11,4 +13,4 @@ else
     ansible_opts="--ask-sudo-pass"
 fi
 
-ANSIBLE_NOCOWS=1 ansible-playbook -i "localhost," $ansible_opts ./setup.yml
+ANSIBLE_NOCOWS=1 ansible-playbook -i "localhost," $ansible_opts ${this_dir}/setup.yml
