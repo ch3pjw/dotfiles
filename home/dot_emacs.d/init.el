@@ -6,10 +6,20 @@
 ; Makes MELPA package stuff available in this file
 (package-initialize)
 
+; use-package will automatically handle installing missing packages
+(if (not (package-installed-p 'use-package))
+  (progn
+    (package-refresh-contents)
+    (package-install 'use-package)))
+
+(require 'use-package)
+
 ; UI stuff:
-(require 'windresize)
-(require 'evil)
-(evil-mode 1)
+(use-package windresize
+  :ensure windresize)
+(use-package evil
+  :ensure evil
+  :config (evil-mode 1))
 (defun my-esc (prompt)
   "Evil insert state esc == C-g binding"
   (cond
@@ -35,8 +45,9 @@
 
 
 (menu-bar-mode -1)
-(require 'ido)
-(ido-mode t)
+(use-package ido
+  :ensure ido
+  :config (ido-mode t))
 (savehist-mode 1)
 
 (setq
@@ -45,17 +56,20 @@
   scroll-preserve-screen-position 1)
 (setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
 
-(require 'auto-complete)
-(global-auto-complete-mode 1)
+(use-package auto-complete
+  :ensure auto-complete
+  :config (global-auto-complete-mode 1))
 
 ; General file editing preferences
 (global-linum-mode 1)
 (global-hl-line-mode 1)
 
 (column-number-mode 1) ; in mode line
-(require 'column-enforce-mode)
-(global-column-enforce-mode 1)
-(require 'fill-column-indicator)
+(use-package column-enforce-mode
+  :ensure column-enforce-mode
+  :config (global-column-enforce-mode 1))
+(use-package fill-column-indicator
+  :ensure fill-column-indicator)
 ; fci-mode doesn't provide its own global setting
 (define-globalized-minor-mode global-fci-mode fci-mode turn-on-fci-mode)
 (global-fci-mode 1)
@@ -63,17 +77,18 @@
 (setq fci-rule-character ?│)
 (setq fci-rule-character-color "grey15")
 
-(show-smartparens-global-mode +1)
 (setq-default indent-tabs-mode nil)
 ; (global-git-gutter-mode +1)
 
 (setq-default show-trailing-whitespace t)
 (add-hook 'write-file-hooks 'delete-trailing-whitespace)
 
-(add-to-list 'load-path "~/.emacs.d/go-mode.el")
-(require 'go-mode-load)
+(use-package go-mode
+  :ensure go-mode)
 
-(elpy-enable)
+(use-package elpy
+  :ensure elpy
+  :config (elpy-enable))
 (add-hook 'python-mode-hook (lambda () (auto-complete-mode -1)))
 
 (add-to-list 'auto-mode-alist '("\\.cjsx$" . coffee-mode))
