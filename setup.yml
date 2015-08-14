@@ -43,6 +43,7 @@
       with_items:
         - src
         - tmp
+        - .emacs.d
 
     - name: clone sources
       git: clone=yes repo={{item.repo}} dest=~/src/{{item.dest}}
@@ -62,8 +63,8 @@
             dest: ~/bin
           - src: ~/src/dotfiles/home/dot_bashrc
             dest: ~/.bashrc
-          - src: ~/src/dotfiles/home/dot_emacs.d
-            dest: ~/.emacs.d
+          - src: ~/src/dotfiles/home/dot_emacs.d/init.el
+            dest: ~/.emacs.d/init.el
           - src: ~/src/dotfiles/home/dot_tmux.conf
             dest: ~/.tmux.conf
           - src: ~/src/bash_prompt/bash_colors
