@@ -42,6 +42,7 @@
 (define-key key-translation-map (kbd "C-g") 'my-esc)
 (define-key evil-operator-state-map (kbd "C-g") 'keyboard-quit)
 (add-to-list 'evil-emacs-state-modes 'git-rebase-mode)
+(add-to-list 'evil-emacs-state-modes 'git-commit-mode)
 
 
 (menu-bar-mode -1)
@@ -83,15 +84,38 @@
 (setq-default show-trailing-whitespace t)
 (add-hook 'write-file-hooks 'delete-trailing-whitespace)
 
-(use-package go-mode
-  :ensure go-mode)
+; Language/tool related modes:
+;; (use-package git-commit-mode
+;;   :ensure git-commit-mode)
+;; (use-package git-rebase-mode
+;;   :ensure git-rebase-mode)
+
+(use-package dockerfile-mode
+  :ensure dockerfile-mode)
 
 (use-package elpy
   :ensure elpy
   :config (elpy-enable))
 (add-hook 'python-mode-hook (lambda () (auto-complete-mode -1)))
 
-(add-to-list 'auto-mode-alist '("\\.cjsx$" . coffee-mode))
+(use-package cython-mode
+  :ensure cython-mode)
+
+(use-package haskell-mode
+  :ensure haskell-mode)
+
+(use-package go-mode
+  :ensure go-mode)
+
+(use-package coffee-mode
+  :ensure coffee-mode
+  :init (add-to-list 'auto-mode-alist '("\\.cjsx$" . coffee-mode)))
+
+(use-package markdown-mode
+  :ensure markdown-mode)
+
+(use-package yaml-mode
+  :ensure yaml-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
