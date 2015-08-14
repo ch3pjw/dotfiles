@@ -30,3 +30,6 @@ else
 fi
 
 ANSIBLE_NOCOWS=1 ansible-playbook -i "localhost," $ansible_opts ${this_dir}/setup.yml
+
+echo "You may want to make sure your ssh key is on github:"
+cat ~/.ssh/id_rsa.pub

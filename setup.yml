@@ -33,6 +33,11 @@
         - {field: email, value: paul@ruthorn.co.uk}
         - {field: name, value: Paul Weaver}
 
+    - name: generate SSH key
+      command: ssh-keygen -f ~/.ssh/id_rsa -P ''
+      args:
+        creates: ~/.ssh/id_rsa
+
     - name: home dirs
       file: path=~/{{item}} state=directory
       with_items:
