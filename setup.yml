@@ -53,6 +53,8 @@
             dest: ~/bin
           - src: ~/src/dotfiles/home/dot_bashrc
             dest: ~/.bashrc
+          - src: ~/src/dotfiles/home/dot_emacs.d
+            dest: ~/.emacs.d
           - src: ~/src/bash_prompt/bash_colors
             dest: ~/.bash_colors
           - src: ~/src/bash_prompt/prompt_command
