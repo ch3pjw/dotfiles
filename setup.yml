@@ -8,6 +8,10 @@
       confirm: yes
       salt_size: 7
   tasks:
+    - name: Install apt update stamp hook
+      copy: src=etc/apt/apt.conf.d/15update-stamp dest=/etc/apt/apt.conf.d/15udpate-stamp owner=root group=root
+      sudo: yes
+
     - name: Upgrade all system packages
       apt: upgrade=yes update_cache=yes cache_valid_time=86400
       sudo: yes
