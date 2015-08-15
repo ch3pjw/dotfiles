@@ -1,5 +1,10 @@
 - hosts: localhost
   connection: local
+  vars:
+    adobe_font_list:
+      - source-code-pro
+      - source-sans-pro
+      - source-serif-pro
   vars_prompt:
     - name: "tmux_share_password"
       prompt:  "guest password for sharing tmux sessions"
@@ -44,6 +49,7 @@
         - src
         - tmp
         - .emacs.d
+        - .fonts
 
     - name: clone sources
       git: clone=yes repo={{item.repo}} dest=~/src/{{item.dest}}
@@ -53,7 +59,32 @@
         - repo: https://github.com/ch3pjw/bash_prompt.git
           dest: bash_prompt
 
-    - name: clean user dotfiles
+    - stat: path=~/.fonts/source-code-pro
+      register: fonts_present
+
+    - name: Fetch Adobe fonts
+      get_url:
+        url: https://github.com/adobe-fonts/{{item}}/archive/release.zip
+        dest: /tmp/{{item}}-release.zip
+      with_items: adobe_font_list
+      when: fonts_present.stat.exists == False
+
+    - name: Extract Adobe fonts
+      unarchive:
+        copy: no
+        src: /tmp/{{item}}-release.zip
+        dest: /tmp
+      with_items: adobe_font_list
+      when: fonts_present.stat.exists == False
+
+    - name: Install Adobe fonts
+      copy: src=/tmp/{{item}}-release/OTF/ dest=~/.fonts/{{item}}/
+      with_items: adobe_font_list
+
+    - name: update font cache
+      command: fc-cache -f -v
+
+    - name: clean any pre-existing dotfiles
       file: path=~/.bashrc state=absent
 
     - name: dotfile ~ links
