@@ -36,6 +36,8 @@
         - chromium-browser
         - clementine
         - gnome-tweak-tool
+        - evolution
+        - nautilus
 
     - name: setup git user info
       command: git config --global user.{{item.field}} {{item.value}}
