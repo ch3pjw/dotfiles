@@ -103,6 +103,8 @@
             dest: ~/.emacs.d/init.el
           - src: ~/src/dotfiles/home/dot_tmux.conf
             dest: ~/.tmux.conf
+          - src: ~/src/dotfiles/home/dot_noserc
+            dest: ~/.noserc
           - src: ~/src/bash_prompt/bash_colors
             dest: ~/.bash_colors
           - src: ~/src/bash_prompt/prompt_command

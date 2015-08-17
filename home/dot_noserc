@@ -1,0 +1,3 @@
+[nosetests]
+# pip install nose-progressive
+with-progressive = 1
