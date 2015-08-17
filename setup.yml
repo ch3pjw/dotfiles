@@ -87,6 +87,7 @@
     - name: Install Adobe fonts
       copy: src=/tmp/{{item}}-release/OTF/ dest=~/.fonts/{{item}}/
       with_items: adobe_font_list
+      when: fonts_present.stat.exists == False
 
     - name: update font cache
       command: fc-cache -f -v
