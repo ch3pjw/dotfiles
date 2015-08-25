@@ -38,6 +38,10 @@
         - gnome-tweak-tool
         - evolution
         - nautilus
+        - git-gui
+        - build-essential
+        - apt-file
+        - cloc
 
     - name: setup git user info
       command: git config --global user.{{item.field}} {{item.value}}
