@@ -42,6 +42,7 @@
         - build-essential
         - apt-file
         - cloc
+        - openssh-server
 
     - name: setup git user info
       command: git config --global user.{{item.field}} {{item.value}}
@@ -117,12 +118,12 @@
           - src: ~/src/bash_prompt/prompt_command
             dest: ~/.prompt_command
 
-    # - name: global tmux_share login shell
-    #   file:
-    #     path: /bin/tmux_share_guest_shell
-    #     state: link
-    #     src: ~/bin/tmux_share_guest_shell
-    #   sudo: yes
+    - name: global tmux_share login shell
+      copy:
+        dest: /bin/tmux_share_guest_shell
+        src: bin/tmux_share_guest_shell
+        mode: u=rx,g=rx,o=rx
+      sudo: yes
 
     - name: guest user for tmux_share
       user:
@@ -131,7 +132,6 @@
         createhome: no
         password: tmux_share_password
         shell: /bin/tmux_share_guest_shell
-        expires: 1.0  # Recommended to disable account
       sudo: yes
 
     - name: disable guest account

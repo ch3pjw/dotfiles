@@ -59,7 +59,7 @@ esac
 #socket=/tmp/tmux_share_socket
 #mode=/tmp/tmux_share_mode
 #alias tmux='TERM=xterm-256color tmux'
-#if [[ $(cat ${mode}) == 'rw' ]]; then 
+#if [[ $(cat ${mode}) == 'rw' ]]; then
 #        tmux -S ${socket} attach
 #else
 #        tmux -S ${socket} attach -r
