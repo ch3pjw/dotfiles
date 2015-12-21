@@ -6,7 +6,6 @@ import subprocess
 import socket
 import re
 
-default_host_name = 'server.gingerblue.co.uk'
 default_interface = 'wlan0'
 
 ipv4_regex = '\d+(?:\.\d+){3}'
@@ -48,7 +47,7 @@ def _common(action, noop_check, noop_msg, op_msg, host_name, interface):
             raise ValueError('Could not find gateway IP')
 
 
-def add(host_name=default_host_name, interface=default_interface):
+def add(host_name, interface=default_interface):
     '''Add a custom route to the given host via the given interface'''
     noop_msg = (
         '{interface} route to {host_name!r} ({host_ip}) already in place')
@@ -58,7 +57,7 @@ def add(host_name=default_host_name, interface=default_interface):
     _common('add', _route_exists, noop_msg, op_msg, host_name, interface)
 
 
-def delete(host_name=default_host_name, interface=default_interface):
+def delete(host_name, interface=default_interface):
     '''Remove a custom route to the given host via the given interface
     '''
     noop_msg = 'No existing alternate route to {host_name!r} ({host_ip})'
