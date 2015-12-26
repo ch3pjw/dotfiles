@@ -39,6 +39,31 @@ function .. {
     cd $dir >&/dev/null
 }
 
+# Fat finger aliases
+alias lks='ls'
+alias lsd='ls'
+alias las='ls'
+alias ks='ls'
+alias l='ls'
+alias s='ls'
+alias sl='ls'
+alias vm='mv'
+alias kess='less'
+alias cim='vim'
+alias bim='vim'
+alias emasc='emacs'
+alias emcas='emacs'
+alias enacs='emacs'
+alias encas='emacs'
+alias eamcs='emacs'
+alias wrokon='workon'
+alias wrokno='workon'
+alias workno='workon'
+alias worokn='workon'
+alias workn='workon'
+alias wokon='workon'
+alias tmxu='tmux'
+
 run_emacs='emacsclient -t'
 alias emacs=$run_emacs
 export EDITOR=$run_emacs
