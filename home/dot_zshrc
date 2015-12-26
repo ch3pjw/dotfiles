@@ -74,6 +74,14 @@ setopt histignorealldups sharehistory
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
+# Conveniently search history with arrow keys (like ipython)
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
+
 HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
