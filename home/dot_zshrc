@@ -64,6 +64,8 @@ alias workn='workon'
 alias wokon='workon'
 alias tmxu='tmux'
 
+
+# Editor
 run_emacs='emacsclient -t'
 alias emacs=$run_emacs
 export EDITOR=$run_emacs
