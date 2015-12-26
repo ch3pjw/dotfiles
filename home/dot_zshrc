@@ -10,6 +10,13 @@ source ~/.zsh_prompt
 # in ~/.tmux.conf
 alias tmux='TERM=xterm-256color tmux'
 
+# Program environment variables
+export WORKON_HOME=$HOME/.virtualenvs
+_vew=/usr/local/bin/virtualenvwrapper.sh
+if [[ -e $_vew ]]; then
+    source $_vew
+fi
+
 run_emacs='emacsclient -t'
 alias emacs=$run_emacs
 export EDITOR=$run_emacs
