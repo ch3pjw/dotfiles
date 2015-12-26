@@ -18,6 +18,17 @@ if [[ -e $_vew ]]; then
 fi
 
 # Convenience aliases and functions
+alias install='sudo aptitude install'
+alias update='sudo aptitude upgrade -y'
+
+alias pgrep='pgrep -l'
+alias ggrep='git grep -n'
+alias la='ls -a'
+alias ll='ls -l'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
 function .. {
     local arg=${1=1}
     local dir=""
