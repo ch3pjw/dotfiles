@@ -5,10 +5,11 @@
 # prompt adam1
 source ~/.zsh_prompt
 
-# Enable 256 colours in tmux (needs to be accompanied by
-#   set -g default-terminal "screen-256color"
-# in ~/.tmux.conf
-alias tmux='TERM=xterm-256color tmux'
+if [[ "$TERM" == "xterm" ]]; then
+    # Probably actually gnome-terminal, and we want the same colours we get in
+    # tmux:
+    export TERM=screen-256color
+fi
 
 # Program environment variables
 export WORKON_HOME=$HOME/.virtualenvs
