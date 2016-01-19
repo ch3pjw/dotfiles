@@ -6,6 +6,9 @@
       - source-sans-pro
       - source-serif-pro
   vars_prompt:
+    - name: main_user_name
+      prompt: "main user name for this machine"
+      private: no
     - name: "tmux_share_password"
       prompt:  "guest password for sharing tmux sessions"
       private: yes
@@ -51,10 +54,12 @@
         - {field: email, value: paul@ruthorn.co.uk}
         - {field: name, value: Paul Weaver}
 
-    - name: generate SSH key
-      command: ssh-keygen -f ~/.ssh/id_rsa -P ''
-      args:
-        creates: ~/.ssh/id_rsa
+    - name: setup main user
+      user:
+        name: "{{ main_user_name }}"
+        shell: /usr/bin/zsh
+        generate_ssh_key: yes
+      become: yes
 
     - name: home dirs
       file: path=~/{{item}} state=directory
