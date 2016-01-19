@@ -9,7 +9,7 @@
     - name: main_user_name
       prompt: "main user name for this machine"
       private: no
-    - name: "tmux_share_password"
+    - name: tmux_share_password
       prompt:  "guest password for sharing tmux sessions"
       private: yes
       encrypt: sha512_crypt
