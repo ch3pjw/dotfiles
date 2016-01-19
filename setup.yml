@@ -15,15 +15,15 @@
   tasks:
     - name: Install apt update stamp hook
       copy: src=etc/apt/apt.conf.d/15update-stamp dest=/etc/apt/apt.conf.d/15udpate-stamp owner=root group=root
-      sudo: yes
+      become: yes
 
     - name: Upgrade all system packages
       apt: upgrade=yes update_cache=yes cache_valid_time=86400
-      sudo: yes
+      become: yes
 
     - name: Install applications
       apt: name={{item}} state=latest
-      sudo: yes
+      become: yes
       with_items:
         - git
         - emacs
@@ -123,7 +123,7 @@
         dest: /bin/tmux_share_guest_shell
         src: bin/tmux_share_guest_shell
         mode: u=rx,g=rx,o=rx
-      sudo: yes
+      become: yes
 
     - name: guest user for tmux_share
       user:
@@ -132,8 +132,8 @@
         createhome: no
         password: tmux_share_password
         shell: /bin/tmux_share_guest_shell
-      sudo: yes
+      become: yes
 
     - name: disable guest account
       command: usermod --lock guest
-      sudo: yes
+      become: yes
