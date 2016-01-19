@@ -29,6 +29,7 @@
         - emacs
         - vim
         - tmux
+        - zsh
         - htop
         - mtr-tiny
         - ghc
@@ -36,13 +37,13 @@
         - chromium-browser
         - clementine
         - gnome-tweak-tool
-        - evolution
         - nautilus
         - git-gui
         - build-essential
         - apt-file
         - cloc
         - openssh-server
+        - hexchat
 
     - name: setup git user info
       command: git config --global user.{{item.field}} {{item.value}}
