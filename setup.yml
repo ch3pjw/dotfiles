@@ -74,8 +74,8 @@
       with_items:
         - repo: https://github.com/ch3pjw/dotfiles.git
           dest: dotfiles
-        - repo: https://github.com/ch3pjw/bash_prompt.git
-          dest: bash_prompt
+        - repo: https://github.com/ch3pjw/zsh_prompt.git
+          dest: zsh_prompt
 
     - stat: path=~/.fonts/source-code-pro
       register: fonts_present
@@ -104,25 +104,26 @@
       command: fc-cache -f -v
 
     - name: clean any pre-existing dotfiles
-      file: path=~/.bashrc state=absent
+      file: path={{item}} state=absent
+      with_items:
+          - ~/.bashrc
+          - ~/.zshrc
 
     - name: dotfile ~ links
       file: path={{item.dest}} state=link src={{item.src}}
       with_items:
           - src: ~/src/dotfiles/home/bin
             dest: ~/bin
-          - src: ~/src/dotfiles/home/dot_bashrc
-            dest: ~/.bashrc
+          - src: ~/src/dotfiles/home/dot_zshrc
+            dest: ~/.zshrc
+          - src: ~/src/zsh_prompt/zsh_prompt
+            dest: ~/.zsh_prompt
           - src: ~/src/dotfiles/home/dot_emacs.d/init.el
             dest: ~/.emacs.d/init.el
           - src: ~/src/dotfiles/home/dot_tmux.conf
             dest: ~/.tmux.conf
           - src: ~/src/dotfiles/home/dot_noserc
             dest: ~/.noserc
-          - src: ~/src/bash_prompt/bash_colors
-            dest: ~/.bash_colors
-          - src: ~/src/bash_prompt/prompt_command
-            dest: ~/.prompt_command
 
     - name: global tmux_share login shell
       copy:
