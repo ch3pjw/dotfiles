@@ -24,7 +24,7 @@ do_tmux ()
     (sleep 2; chmod 777 ${socket}) &
     TERM=xterm-256color
     tmux -S ${socket}
-    rm ${socket}
+    rm -f ${socket}
     rm ${mode_file}
     # lock the guest account now we're done with it - Linux
     sudo usermod -L guest
