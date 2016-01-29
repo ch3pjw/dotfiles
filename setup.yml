@@ -48,11 +48,14 @@
         - openssh-server
         - hexchat
 
-    - name: setup git user info
+    - name: set up git user info
       command: git config --global user.{{item.field}} {{item.value}}
       with_items:
         - {field: email, value: paul@ruthorn.co.uk}
         - {field: name, value: Paul Weaver}
+
+    - name: set up git lg prettyness
+      command: git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
     - name: setup main user
       user:
@@ -60,6 +63,11 @@
         shell: /usr/bin/zsh
         generate_ssh_key: yes
       become: yes
+
+    - name: generate SSH key
+      command: ssh-keygen -f ~/.ssh/id_rsa -P ''
+      args:
+        creates: ~/.ssh/id_rsa
 
     - name: home dirs
       file: path=~/{{item}} state=directory
