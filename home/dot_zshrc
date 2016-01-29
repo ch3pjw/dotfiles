@@ -62,8 +62,6 @@ alias emacs=$run_emacs
 export EDITOR=$run_emacs
 export ALTERNATE_EDITOR=""  # Start emacsclient start the daemon automatically
 
-setopt histignorealldups sharehistory
-
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
@@ -74,6 +72,8 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 [[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
+
+setopt histignorealldups sharehistory
 
 HISTSIZE=100000
 SAVEHIST=100000
