@@ -11,6 +11,9 @@ if [[ "$TERM" == "xterm" ]]; then
     export TERM=screen-256color
 fi
 
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
 # Program environment variables
 export WORKON_HOME=$HOME/.virtualenvs
 _vew=/usr/local/bin/virtualenvwrapper.sh
