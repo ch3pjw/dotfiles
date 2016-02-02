@@ -1,0 +1,86 @@
+# Swanky prompt
+source ~/src/zsh_prompt/zsh_prompt
+
+if [[ "$TERM" == "xterm" ]]; then
+    # Probably actually gnome-terminal, and we want the same colours we get in
+    # tmux:
+    export TERM=screen-256color
+fi
+
+# Program environment variables
+export WORKON_HOME=$HOME/.virtualenvs
+_vew=/usr/local/bin/virtualenvwrapper.sh
+if [[ -e $_vew ]]; then
+    source $_vew
+fi
+
+# Convenience aliases and functions
+alias install='brew install'
+alias update='brew update && brew upgrade --all'
+
+alias pgrep='pgrep -l'
+alias ggrep='git grep -n'
+alias ls='ls -G'  # Add colour to OSX's BSD ls
+alias la='ls -a'
+alias ll='ls -l'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+# Fat finger aliases
+alias lks='ls'
+alias lsd='ls'
+alias las='ls'
+alias ks='ls'
+alias l='ls'
+alias s='ls'
+alias sl='ls'
+alias vm='mv'
+alias kess='less'
+alias cim='vim'
+alias bim='vim'
+alias emasc='emacs'
+alias emcas='emacs'
+alias enacs='emacs'
+alias encas='emacs'
+alias eamcs='emacs'
+alias wrokon='workon'
+alias wrokno='workon'
+alias workno='workon'
+alias worokn='workon'
+alias workn='workon'
+alias wokon='workon'
+alias tmxu='tmux'
+
+# Editor
+run_emacs='emacsclient -t'
+alias emacs=$run_emacs
+export EDITOR=$run_emacs
+export ALTERNATE_EDITOR=""  # Start emacsclient start the daemon automatically
+
+source /Users/paul/.zkbd/screen-256color-org.macosforge.xquartz:0
+bindkey -e
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=100000
+SAVEHIST=100000
+setopt appendhistory autocd
+
+# Conveniently search history with arrow keys (like ipython)
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
+
+zstyle :compinstall filename '/Users/paul/.zshrc'
+
+autoload -Uz compinit
+compinit
+
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+
+PATH=~/bin:$PATH
