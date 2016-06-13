@@ -42,6 +42,7 @@
         - gnome-tweak-tool
         - nautilus
         - git-gui
+        - gitg
         - build-essential
         - apt-file
         - cloc
