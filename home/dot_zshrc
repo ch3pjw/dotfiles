@@ -88,6 +88,10 @@ HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
+# Strip out / from WORDCHARS so that ^w will only delete up to the last portion
+# of a path:
+WORDCHARS="${WORDCHARS:s#/##}"
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
