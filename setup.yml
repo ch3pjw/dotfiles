@@ -36,7 +36,6 @@
         - tree
         - htop
         - mtr-tiny
-        - ghc
         - speedcrunch
         - chromium-browser
         - clementine
