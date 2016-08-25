@@ -33,6 +33,12 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
+function f() {
+    glob="*$1*"
+    shift
+    find . -name $glob $@ | grep -v \.pyc
+}
+
 # Fat finger aliases
 alias lks='ls'
 alias lsd='ls'
