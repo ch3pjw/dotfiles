@@ -133,6 +133,8 @@
             dest: ~/.tmux.conf
           - src: ~/src/dotfiles/home/dot_noserc
             dest: ~/.noserc
+          - src: ~/src/dotfiles/home/dot_gitconfig
+            dest: ~/.gitconfig
 
     - name: global tmux_share login shell
       copy:
