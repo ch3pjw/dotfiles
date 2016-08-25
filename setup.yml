@@ -33,6 +33,7 @@
         - vim
         - tmux
         - zsh
+        - tree
         - htop
         - mtr-tiny
         - ghc
