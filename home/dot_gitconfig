@@ -1,6 +1,8 @@
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        currentbranch = rev-parse --abbrev-ref HEAD
         # http://megakemp.com/2016/08/25/git-undo/
-	undo = "!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f"
+        undo = "!f() { git reset --hard $(git currentbranch)@{${1-1}}; }; f"
+        branchdiff = "! f() { git diff $(git merge-base $(git currentbranch) ${1:-master}); }; f"
 [push]
 	default = simple
