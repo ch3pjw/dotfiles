@@ -135,6 +135,8 @@
             dest: ~/.noserc
           - src: ~/src/dotfiles/home/dot_gitconfig
             dest: ~/.gitconfig
+          - src: ~/src/dotfiles/home/dot_ghc/ghci.conf
+            dest: ~/.ghc/ghci.conf
 
     - name: global tmux_share login shell
       copy:
