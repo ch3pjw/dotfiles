@@ -93,7 +93,7 @@
       get_url:
         url: https://github.com/adobe-fonts/{{item}}/archive/release.zip
         dest: /tmp/{{item}}-release.zip
-      with_items: adobe_font_list
+      with_items: "{{ adobe_font_list }}"
       when: fonts_present.stat.exists == False
 
     - name: Extract Adobe fonts
@@ -101,12 +101,12 @@
         copy: no
         src: /tmp/{{item}}-release.zip
         dest: /tmp
-      with_items: adobe_font_list
+      with_items: "{{ adobe_font_list }}"
       when: fonts_present.stat.exists == False
 
     - name: Install Adobe fonts
       copy: src=/tmp/{{item}}-release/OTF/ dest=~/.fonts/{{item}}/
-      with_items: adobe_font_list
+      with_items: "{{ adobe_font_list }}"
       when: fonts_present.stat.exists == False
 
     - name: update font cache
