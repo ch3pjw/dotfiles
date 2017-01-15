@@ -55,8 +55,19 @@
         - {field: email, value: paul@ruthorn.co.uk}
         - {field: name, value: Paul Weaver}
 
-    - name: set up git lg prettyness
-      command: git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+    - name: set up git aliases
+      command: git config --global alias.{{name}} "{{ name }}"
+      with_items:
+        - name: lg
+          command: "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+        - name: currentbranch
+          command: "rev-parse --abbrev-ref HEAD"
+        - name: branchdiff
+          command: "! f() { git diff $(git merge-base $(git currentbranch) ${1:-master}); }; f"
+        # http://megakemp.com/2016/08/25/git-undo/
+        - name: undo
+          command: "!f() { git reset --hard $(git currentbranch)@{${1-1}}; }; f"
+
 
     - name: setup main user
       user:
