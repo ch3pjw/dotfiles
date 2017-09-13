@@ -21,6 +21,8 @@ if [[ -e $_vew ]]; then
     source $_vew
 fi
 
+PATH=~/.cabal/bin:$PATH
+
 # Convenience aliases and functions
 alias install='sudo aptitude install'
 alias update='sudo aptitude upgrade -y'
