@@ -29,6 +29,7 @@ alias update='sudo aptitude upgrade -y'
 
 alias pgrep='pgrep -l'
 alias ggrep='git grep -n'
+alias nau='nautilus --no-desktop'
 alias la='ls -a'
 alias ll='ls -l'
 alias cp='cp -i'
