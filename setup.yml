@@ -67,6 +67,10 @@
         # http://megakemp.com/2016/08/25/git-undo/
         - name: undo
           command: "!f() { git reset --hard $(git currentbranch)@{${1-1}}; }; f"
+        # https://csswizardry.com/2017/05/little-things-i-like-to-do-with-git/
+        # See which branches you recently worked on:
+        - name: recent
+          command: for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"
 
 
     - name: setup main user
