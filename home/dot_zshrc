@@ -16,6 +16,7 @@ alias grep='grep --color=auto'
 
 # Program environment variables
 export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 _vew=/usr/local/bin/virtualenvwrapper.sh
 if [[ -e $_vew ]]; then
     source $_vew
