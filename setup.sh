@@ -20,13 +20,13 @@ if (( $update_apt == 1 )); then
     sudo apt-get upgrade -y
 fi
 
-sudo apt-get install -y python-pip python-dev aptitude
-sudo pip install ansible markupsafe passlib
+sudo apt-get install -y python3-pip python3-dev aptitude
+sudo pip3 install ansible markupsafe passlib
 
 if sudo -k -n true > /dev/null 2>&1; then
     ansible_opts=""
 else
-    ansible_opts="--ask-sudo-pass"
+    ansible_opts="--ask-become-pass"
 fi
 
 ANSIBLE_NOCOWS=1 ansible-playbook -i "localhost," $ansible_opts ${this_dir}/setup.yml
