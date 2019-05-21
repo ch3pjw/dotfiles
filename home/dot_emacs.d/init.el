@@ -111,6 +111,10 @@
   :ensure coffee-mode
   :init (add-to-list 'auto-mode-alist '("\\.cjsx$" . coffee-mode)))
 
+(use-package jinja2-mode
+  :ensure jinja2-mode
+  :init (add-to-list 'auto-mode-alist '("\\.j2$" . jinja2-mode)))
+
 (use-package markdown-mode
   :ensure markdown-mode)
 
