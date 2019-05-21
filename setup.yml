@@ -147,8 +147,6 @@
             dest: ~/.tmux.conf
           - src: ~/src/dotfiles/home/dot_noserc
             dest: ~/.noserc
-          - src: ~/src/dotfiles/home/dot_gitconfig
-            dest: ~/.gitconfig
           - src: ~/src/dotfiles/home/dot_ghc/ghci.conf
             dest: ~/.ghc/ghci.conf
 
