@@ -52,7 +52,6 @@
     - name: set up git user info
       command: git config --global user.{{item.field}} {{item.value}}
       with_items:
-        - {field: email, value: paul@ruthorn.co.uk}
         - {field: name, value: Paul Weaver}
 
     - name: set up git aliases
