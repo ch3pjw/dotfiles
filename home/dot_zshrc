@@ -96,10 +96,17 @@ alias tmxu='tmux'
 
 
 # Editor
-run_emacs='emacsclient -t'
-alias emacs=$run_emacs
-export EDITOR=$run_emacs
+alias emacs='emacsclient -t'
+export EDITOR=nvim
 export ALTERNATE_EDITOR=""  # Start emacsclient start the daemon automatically
+
+function _nvim_if_exists() {
+    if [[ -f $1 ]]; then
+        nvim $1
+    else
+        $1
+    fi
+}
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
