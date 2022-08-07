@@ -30,7 +30,7 @@
       with_items:
         - git
         - emacs
-        - vim
+        - neovim
         - tmux
         - zsh
         - tree
