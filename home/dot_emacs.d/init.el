@@ -44,6 +44,9 @@
 (add-to-list 'evil-emacs-state-modes 'git-rebase-mode)
 (add-to-list 'evil-emacs-state-modes 'git-commit-mode)
 
+(global-set-key (kbd "<f8>") 'flymake-goto-next-error)
+(global-set-key (kbd "S-<f8>") 'flymake-goto-prev-error)
+
 
 (menu-bar-mode -1)
 (use-package ido
