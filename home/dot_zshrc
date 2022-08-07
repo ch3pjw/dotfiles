@@ -66,6 +66,8 @@ function ..() {
     cd $dir >&/dev/null
 }
 setopt auto_cd
+setopt auto_pushd
+DIRSTACKSIZE=9
 
 # Fat finger aliases
 alias lks='ls'
