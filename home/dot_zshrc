@@ -37,6 +37,14 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
+function ddr() {
+    ddrescue $1 $2.iso $2.map
+}
+
+function unlock_pdf() {
+    qpdf --password=$1 --decrypt $2 $2.unlocked
+}
+
 function f() {
     glob="*$1*"
     shift
