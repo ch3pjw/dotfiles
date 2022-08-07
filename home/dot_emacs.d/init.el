@@ -129,7 +129,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(evil-want-C-w-in-emacs-state t))
+ '(evil-want-C-w-in-emacs-state t)
+ '(package-selected-packages
+   (quote
+    (auto-package-update yaml-mode windresize use-package markdown-mode jinja2-mode haskell-mode go-mode fill-column-indicator evil elpy dockerfile-mode cython-mode column-enforce-mode coffee-mode auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
