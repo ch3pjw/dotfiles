@@ -37,8 +37,8 @@ if [[ -z $1 ]]; then
     exit 0
 fi
 
-# Source my bashrc so that tmux alias gets made, making it use full colour :)
-source ~/.bashrc
+# Source my zshrc so that tmux alias gets made, making it use full colour :)
+source ~/.zshrc
 
 case "$1" in
     rw)
