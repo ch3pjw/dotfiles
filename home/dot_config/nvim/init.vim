@@ -6,6 +6,11 @@ call plug#end()
 
 filetype plugin indent on
 
+" Set completeopt to have a better completion experience
+" menuone: pop up even when there's only one match
+" noinsert: do not insert text until a selection is made
+" noselect: do not automatically select, force user to select an option from the menu
+set completeopt=menuone,noinsert,noselect
 set hlsearch             " highlight searches
 set incsearch            " 'incremental' searching: highlight search as you type it
 set number               " show line numbers
