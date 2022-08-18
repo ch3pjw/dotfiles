@@ -1,5 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'joshdick/onedark.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 set hlsearch             " highlight searches
