@@ -3,6 +3,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 filetype plugin indent on
