@@ -41,3 +41,11 @@ vmap <C-G> <Esc>
 
 " Select the last pasted text, similar to `gv`:
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+autocmd BufWritePre * call StripWhitespace()
+function! StripWhitespace()
+    let pos = getcurpos()
+    %s/\s\+$//e " EOL
+    %s#\($\n\s*\)\+\%$##e " EOF
+    call setpos('.', pos)
+endfunction
