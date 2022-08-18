@@ -4,13 +4,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 call plug#end()
 
+filetype plugin indent on
+
 set hlsearch             " highlight searches
 set incsearch            " 'incremental' searching: highlight search as you type it
 set number               " show line numbers
 set nocompatible         " disable vi compatibility
 
 " Tab handling:
-filetype plugin indent on
 set autoindent
 set expandtab            " turns tabs into spaces
 set softtabstop=4        " makes backspace delete spaces as if tabs
