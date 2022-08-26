@@ -53,3 +53,8 @@ function! StripWhitespace()
     %s#\($\n\s*\)\+\%$##e " EOF
     call setpos('.', pos)
 endfunction
+
+lua <<EOF
+  require'lspconfig'.pyright.setup{}
+  require'lspconfig'.rust_analyzer.setup{}
+EOF
