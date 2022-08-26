@@ -1,12 +1,12 @@
 call plug#begin('~/.config/nvim/plugged')
 " Collection of common configurations for nvim Language Server Protocol Clients:
+Plug 'airblade/vim-gitgutter'
+Plug 'joshdick/onedark.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'preservim/nerdcommenter'
-Plug 'joshdick/onedark.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 filetype plugin indent on
