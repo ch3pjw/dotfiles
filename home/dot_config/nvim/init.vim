@@ -37,7 +37,7 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-nmap <A-;> <plug>NERDCommenterToggle
+map <A-;> <plug>NERDCommenterToggle
 let g:NERDSpaceDelims = 1  " Adds a space after the comment character itself
 
 imap <C-G> <Esc>
