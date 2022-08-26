@@ -22,7 +22,7 @@ if [[ -e $_vew ]]; then
     source $_vew
 fi
 
-PATH=~/bin:~/.cabal/bin:~/.cargo/bin:$PATH
+PATH=~/.local/bin:~/.cabal/bin:~/.cargo/bin:$PATH
 
 # Convenience aliases and functions
 alias install='sudo aptitude install'
