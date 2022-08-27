@@ -1,6 +1,11 @@
 call plug#begin('~/.config/nvim/plugged')
 " Collection of common configurations for nvim Language Server Protocol Clients:
 Plug 'airblade/vim-gitgutter'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'joshdick/onedark.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'preservim/nerdcommenter'
@@ -11,11 +16,6 @@ call plug#end()
 
 filetype plugin indent on
 
-" Set completeopt to have a better completion experience
-" menuone: pop up even when there's only one match
-" noinsert: do not insert text until a selection is made
-" noselect: do not automatically select, force user to select an option from the menu
-set completeopt=menuone,noinsert,noselect
 set hlsearch             " highlight searches
 set incsearch            " 'incremental' searching: highlight search as you type it
 set number               " show line numbers
@@ -54,7 +54,55 @@ function! StripWhitespace()
     call setpos('.', pos)
 endfunction
 
+" Set completeopt to have a better completion experience
+" menuone: pop up even when there's only one match
+" noinsert: do not insert text until a selection is made
+" noselect: do not automatically select, force user to select an option from the menu
+set completeopt=menuone,noinsert,noselect
+
 lua <<EOF
-  require'lspconfig'.pyright.setup{}
-  require'lspconfig'.rust_analyzer.setup{}
+  local cmp = require'cmp'
+
+  cmp.setup({
+    window = {},
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      -- `true` accepts currently selected item.
+      -- Set `select` to `false` to only confirm explicitly selected items.
+      ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+   -- Setup lspconfig.
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+  )
+  require'lspconfig'.pyright.setup{ capabilities = capabilities }
+  require'lspconfig'.rust_analyzer.setup{ capabilities = capabilities }
 EOF
