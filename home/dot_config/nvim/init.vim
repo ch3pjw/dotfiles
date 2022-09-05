@@ -65,6 +65,27 @@ endfunction
 set completeopt=menuone,noinsert,noselect
 
 lua <<EOF
+  local opts = { noremap=true, silent=true }
+  vim.keymap.set('n', '<F8>', vim.diagnostic.goto_next, opts)
+  vim.keymap.set('n', '<S-F8>', vim.diagnostic.goto_prev, opts)
+
+  vim.o.updatetime = 250
+  vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        -- border = 'rounded',
+        source = 'always',
+        prefix = ' ',
+        scope = 'cursor',
+      }
+      vim.diagnostic.open_float(nil, opts)
+    end
+  })
+
   local cmp = require'cmp'
 
   cmp.setup({
