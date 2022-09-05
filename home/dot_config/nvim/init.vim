@@ -12,6 +12,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 filetype plugin indent on
@@ -36,6 +37,9 @@ augroup CursorLine
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   au WinLeave * setlocal nocursorline
 augroup END
+
+let g:indentLine_char = '┊'
+map <A-\> :IndentLinesToggle<Cr>
 
 map <A-;> <plug>NERDCommenterToggle
 let g:NERDSpaceDelims = 1  " Adds a space after the comment character itself
