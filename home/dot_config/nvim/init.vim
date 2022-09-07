@@ -9,6 +9,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'joshdick/onedark.vim'
+Plug 'lukas-reineke/virt-column.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-repeat'
@@ -40,6 +41,11 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
+set colorcolumn=80
+autocmd BufEnter *.rs set colorcolumn=120
+lua <<EOF
+  require('virt-column').setup { char = '▕'}
+EOF
 let g:indentLine_char = '┊'
 map <A-\> :IndentLinesToggle<Cr>
 
