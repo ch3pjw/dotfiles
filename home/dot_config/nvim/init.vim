@@ -5,7 +5,9 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'joshdick/onedark.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'preservim/nerdcommenter'
@@ -89,6 +91,11 @@ lua <<EOF
   local cmp = require'cmp'
 
   cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end
+    },
     window = {},
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
