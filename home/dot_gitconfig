@@ -1,0 +1,6 @@
+[user]
+	name = Paul Weaver
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	branchdiff = "! f() { git diff 96db7034dc46827b994494047cf04b48b2bf99c3; }; f"
+	currentbranch = rev-parse --abbrev-ref HEAD

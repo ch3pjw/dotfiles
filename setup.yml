@@ -55,7 +55,7 @@
         - {field: name, value: Paul Weaver}
 
     - name: set up git aliases
-      command: git config --global alias.{{name}} "{{ name }}"
+      command: git config --global alias.{{name}} "{{ command }}"
       with_items:
         - name: lg
           command: "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
