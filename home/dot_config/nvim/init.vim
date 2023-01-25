@@ -47,7 +47,10 @@ lua <<EOF
   require('virt-column').setup { char = '▕'}
 EOF
 let g:indentLine_char = '┊'
-map <A-\> :IndentLinesToggle<Cr>
+let g:indentLine_leadingSpaceEnabled = 1
+" A key binding to drop all the extra hinty characters in a buffer for copying
+" with the mouse:
+map <A-\> :set number! <bar> GitGutterToggle <bar> IndentLinesToggle<Cr>
 
 map <A-;> <plug>NERDCommenterToggle
 let g:NERDSpaceDelims = 1  " Adds a space after the comment character itself
@@ -110,7 +113,7 @@ lua <<EOF
       ['<C-e>'] = cmp.mapping.abort(),
       -- `true` accepts currently selected item.
       -- Set `select` to `false` to only confirm explicitly selected items.
-      ['<CR>'] = cmp.mapping.confirm({ select = false }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
@@ -138,9 +141,7 @@ lua <<EOF
   })
 
    -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  )
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
   require'lspconfig'.pyright.setup{ capabilities = capabilities }
   require'lspconfig'.rust_analyzer.setup{ capabilities = capabilities }
 EOF
