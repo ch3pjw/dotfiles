@@ -56,9 +56,6 @@ map <A-\> :set number! <bar> GitGutterToggle <bar> IndentLinesToggle<Cr>
 map <A-;> <plug>NERDCommenterToggle
 let g:NERDSpaceDelims = 1  " Adds a space after the comment character itself
 
-imap <C-G> <Esc>
-vmap <C-G> <Esc>
-
 " Select the last pasted text, similar to `gv`:
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
