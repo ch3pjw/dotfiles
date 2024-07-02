@@ -15,6 +15,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
 call plug#end()
