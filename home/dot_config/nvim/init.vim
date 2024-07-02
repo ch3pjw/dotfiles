@@ -75,6 +75,8 @@ endfunction
 " noselect: do not automatically select, force user to select an option from the menu
 set completeopt=menuone,noinsert,noselect
 
+let g:rustfmt_autosave = 1
+
 lua <<EOF
   local opts = { noremap=true, silent=true }
   vim.keymap.set('n', '<F8>', vim.diagnostic.goto_next, opts)
