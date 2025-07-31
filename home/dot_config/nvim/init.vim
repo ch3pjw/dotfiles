@@ -173,6 +173,12 @@ lua <<EOF
   )
   vim.keymap.set(
     'n',
+    'gr',
+    vim.lsp.buf.references,
+    { noremap = true, silent = true }
+  )
+  vim.keymap.set(
+    'n',
     '<M-CR>',
     vim.lsp.buf.code_action,
     { noremap = true, silent = true }
