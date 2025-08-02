@@ -1,7 +1,47 @@
-[user]
-	name = Paul Weaver
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	currentbranch = rev-parse --abbrev-ref HEAD
+
+[branch]
+    sort = -committerdate
+
+[column]
+    ui = auto
+
+[core]
+    excludesfile = ~/.gitignore
+
+[commit]
+    verbose = true
+
+[diff]
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
+
+[help]
+    autocorrect = prompt
+
 [init]
-	defaultBranch = master
+    defaultBranch = master
+
+[merge]
+    conflictStyle = zdiff3
+
+[push]
+    autoSetupRemote = true
+
+[rebase]
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
+
+[rerere]
+    enabled = true
+    autoupdate = true
+
+[tag]
+    sort = version:refname
+
+[user]
+	name = Paul Weaver
