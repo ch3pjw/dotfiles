@@ -3,7 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lsp', { 'commit': 'a8912b88ce488f411177fc8aed358b04dc246d7b' }
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
@@ -11,7 +11,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'joshdick/onedark.vim'
 " Plug 'kien/ctrlp.vim'
 Plug 'lukas-reineke/virt-column.nvim'
-Plug 'neovim/nvim-lspconfig'
+Plug 'neovim/nvim-lspconfig', { 'tag': 'v1.8.0' }
 Plug 'preservim/nerdcommenter'
 Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-repeat'
