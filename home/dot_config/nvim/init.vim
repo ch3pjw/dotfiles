@@ -27,6 +27,7 @@ set hlsearch             " highlight searches
 set incsearch            " 'incremental' searching: highlight search as you type it
 set number               " show line numbers
 set nocompatible         " disable vi compatibility
+set mouse=
 
 " Tab handling:
 set autoindent
