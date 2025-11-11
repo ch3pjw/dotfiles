@@ -9,7 +9,6 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'joshdick/onedark.vim'
-" Plug 'kien/ctrlp.vim'
 Plug 'lukas-reineke/virt-column.nvim'
 Plug 'neovim/nvim-lspconfig', { 'tag': 'v1.8.0' }
 Plug 'preservim/nerdcommenter'
