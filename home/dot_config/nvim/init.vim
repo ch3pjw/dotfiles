@@ -151,8 +151,17 @@ lua <<EOF
     capabilities = capabilities,
     settings = {
       ["rust-analyzer"] = {
+        assist = {
+          preferSelf = true,
+        },
         cargo = {
-          allFeatures = true,
+          features = "all",
+          allTargets = true,
+        },
+        check = {
+          command = "clippy",
+          features = "all",
+          allTargets = true,
         },
       }
     },
